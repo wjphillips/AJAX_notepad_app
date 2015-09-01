@@ -9,5 +9,5 @@
 		<input type="hidden" name="note_id" value="<?= $id; ?>">
 		<input type="submit" value="Delete">
 	</form>
-</div>
 <hr>
+</div>

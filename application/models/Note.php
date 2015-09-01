@@ -16,14 +16,12 @@ class Note extends CI_Controller {
 	public function update($post){
 		$query = "UPDATE notes SET description = ?, updated_at = NOW() WHERE id = ?";
 		$values = array($post['description'], $post['note_id']);
-		$this->db->query($query, $values);
-		redirect("/");
+		return $this->db->query($query, $values);
 	}
 
 	public function delete($post){
 		$query = "DELETE FROM notes WHERE id = ?";
 		$values = array($post['note_id']);
-		$this->db->query($query, $values);
-		redirect("/");
+		return $this->db->query($query, $values);
 	}
 }

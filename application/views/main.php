@@ -6,16 +6,21 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script>
 		$(document).ready(function(){
-			console.log("Ready");
-			$("#add_form").submit(function(){
-				console.log("Form Submitted");
+			console.log("Document ready...");
+			$(document).on("submit", "form", function(){
+				var temp = this;
 				$.post(
 					$(this).attr("action"),
 					$(this).serialize(),
 					function(result){
 						console.log("Result object below:");
 						console.log(result);
-						$("#notepad").append(result.note);	
+						if(result.type === "create"){
+							$("#notepad").append(result.note);	
+						}
+						if(result.type === "delete"){
+							$(temp).parent().remove();
+						}
 					},
 					"json"
 				);
